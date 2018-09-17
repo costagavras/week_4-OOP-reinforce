@@ -2,6 +2,10 @@
 # Define an initialize method as well as "reader" and "writer" methods for those attributes.
 # Try creating three instances of this class and test out the reader and writer methods.
 
+# Create a TodoList class with a tasks array (which will contain instances of the Task class).
+# Create an initialize method and an add_task method that allows you to pass in an instance of your Task class.
+# Try creating a todo list and adding your three tasks to it.
+
 class Task
 
   @@task_list = []
@@ -11,19 +15,11 @@ class Task
     @due_date = due_date
   end
 
-  def self.create(description, due_date)
+  def self.add_task(description, due_date)
     new_task = Task.new(description, due_date)
-  end
-
-  def self.task_list_create
-    apple = Task.create("eat an apple once a day", "13.00")
-    @@task_list << apple
-    book = Task.create("return the book to the library", "I forget, today")
-    @@task_list << book
-    taxes = Task.create("do taxes", "30.04.2019")
-    @@task_list << taxes
+    @@task_list << new_task
     return @@task_list
-end
+  end
 
   # readers methods
   def description
@@ -66,17 +62,11 @@ end
 
 end
 
-# apple = Task.create("eat an apple once a day", "13.00")
-# book = Task.create("return the book to the library", "I forget, today")
-# taxes = Task.create("do taxes", "30.04.2019")
-# puts apple.inspect
-# puts book.inspect
-# puts taxes.inspect
-# puts apple.description
-Task.task_list_create
+Task.add_task("eat an apple once a day", "13.00")
+Task.add_task("return the book to the library", "I forget, today")
+Task.add_task("do taxes", "30.04.2019")
 puts Task.all.inspect
 Task.test_readers
 Task.test_writers
-# Task.test_attributes(apple)
-# Task.test_attributes(book)
-# Task.test_attributes(taxes)
+Task.add_task("learn ruby", "ASAP")
+puts Task.all.inspect
